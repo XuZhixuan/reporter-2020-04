@@ -1,0 +1,5 @@
+.env
+captcha.png
+venv/
+.vscode/
+__pycache__/
