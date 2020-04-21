@@ -21,7 +21,9 @@
 * 启动虚拟环境，运行 `source ./venv/bin/activate`  
 * 安装依赖，运行 `pip3 install -r requirements.txt`  
 * 退出虚拟环境，运行 `deactivate`
-* 配置 supervisor
+* 复制 .env 运行 `cp .env.example .env`
+* 配置 .env 中的账号信息
+* 配置进程监视
 ## 开发者 | Contributors
 * 代码： [f(x, z)=xzx](https://github.com/XuZhixuan)
 * 技术支持： [mhq1065](https://github.com/mhq1065)
