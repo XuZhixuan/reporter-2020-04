@@ -1,0 +1,11 @@
+[program:reporter]
+autostart   = True
+autorestart = True
+
+command     = /path/to/venv/bin/python3 /path/to/reporter/run.py
+directory   = /path/to/report
+user        = username
+
+stdout_logfile  = /path/to/report/log/stdout.log
+stdout_logfile_maxbytes = 10MB
+stdout_logfile_backups  = 20

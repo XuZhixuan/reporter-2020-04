@@ -169,19 +169,36 @@ def submit_form(session):
     url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/sendCooperative.htm'
 
     print('[  OK  ]Submitting to: ', url, end='')
-    # response = session.post(
-    #     url,
-    #     data=json.dumps(storage['form']),
-    #     headers={
-    #         'Content-Type': 'application/json'
-    #     }
-    # )
+
+    form = {}
+    for (key, value) in storage['form'].items():
+        if value is None:
+            form[key] = value
+        elif isinstance(value, str):
+            form[key] = value
+        else:
+            form[key] = json.dumps(value)
+
+    response = session.post(
+        url,
+        data=form,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+    )
+
+    data = json.loads(response.text)
+
+    if data['code'] != '200':
+        print('\n[FAILED]Submit Error: ', data['desc'])
+        return False
 
     print(' ..... done')
     return
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     print('[  OK  ]Creating Scheduler', end='')
     schedule.every().day.at("01:00").do(run)
     print(' ..... done')

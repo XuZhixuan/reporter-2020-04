@@ -1,4 +1,5 @@
 {
+    "taskTypeId": null,
     "instJson": {
         "id": "",
         "wfInfoId": "4af591a2704254e6017043da642f49aa",
@@ -21,8 +22,7 @@
     "formJson": [
         {
             "id": "",
-            "HT2F4F76": "1@#@是",
-            "HT360413": "1@#@是",
+            "YMTYS": "绿色@#@绿色",
             "SFHQYMT": "是@#@是",
             "XM": "",
             "XGH": "",
@@ -91,9 +91,10 @@
     ],
     "flowJson": [
         {
-            "handerType": "flowHander",
             "id": "",
+            "handerType": "flowHander",
             "nodeId": "0",
+            "level": 1,
             "rightsConfig": {
                 "formFiledDefaultValue": [
                     {
@@ -103,8 +104,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "HT2F4F76",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "是否知晓登录教务系统、思源学堂查看课程",
-                        "_uid": 7
+                        "_uid": 7,
+                        "cnfield": "是否知晓登录教务系统、思源学堂查看课程"
                     },
                     {
                         "field": "HT360413",
@@ -113,8 +114,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "HT360413",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "是否知晓2月17日起学校将线上授课",
-                        "_uid": 8
+                        "_uid": 8,
+                        "cnfield": "是否知晓2月17日起学校将线上授课"
                     },
                     {
                         "field": "XM",
@@ -125,8 +126,8 @@
                         "enfield": "XM",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "_uid": 9,
                         "cnfield": "姓名",
+                        "_uid": 9,
                         "rightType": "noedit"
                     },
                     {
@@ -138,8 +139,8 @@
                         "enfield": "XGH",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "_uid": 10,
                         "cnfield": "学/工号",
+                        "_uid": 10,
                         "rightType": "noedit"
                     },
                     {
@@ -149,8 +150,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SJH",
                         "cnname": "每日疫情填报",
-                        "_uid": 11,
-                        "cnfield": "手机号"
+                        "cnfield": "手机号",
+                        "_uid": 11
                     },
                     {
                         "field": "SZSY",
@@ -161,8 +162,8 @@
                         "enfield": "SZSY",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "_uid": 12,
                         "cnfield": "所在书院",
+                        "_uid": 12,
                         "rightType": "edit"
                     },
                     {
@@ -174,8 +175,8 @@
                         "enfield": "BJ",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "cnfield": "班级",
                         "_uid": 13,
+                        "cnfield": "班级",
                         "rightType": "edit"
                     },
                     {
@@ -185,8 +186,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFLXS",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "是否留学生",
-                        "_uid": 14
+                        "_uid": 14,
+                        "cnfield": "是否留学生"
                     },
                     {
                         "field": "XY",
@@ -195,8 +196,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "XY",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "学院",
-                        "_uid": 15
+                        "_uid": 15,
+                        "cnfield": "学院"
                     },
                     {
                         "field": "JXJLX",
@@ -205,8 +206,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JXJLX",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "奖学金类型",
-                        "_uid": 16
+                        "_uid": 16,
+                        "cnfield": "奖学金类型"
                     },
                     {
                         "field": "SZXQ",
@@ -215,8 +216,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SZXQ",
                         "cnname": "本科生每日健康状况填报5.0",
-                        "cnfield": "所在校区",
-                        "_uid": 17
+                        "_uid": 17,
+                        "cnfield": "所在校区"
                     },
                     {
                         "field": "FSRQ",
@@ -225,8 +226,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "FSRQ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "返陕日期",
-                        "_uid": 18
+                        "_uid": 18,
+                        "cnfield": "返陕日期"
                     },
                     {
                         "field": "JGGNW",
@@ -235,8 +236,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JGGNW",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "籍贯（国内/外）",
-                        "_uid": 19
+                        "_uid": 19,
+                        "cnfield": "籍贯（国内/外）"
                     },
                     {
                         "field": "GWJG",
@@ -245,8 +246,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "GWJG",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "国外籍贯",
-                        "_uid": 20
+                        "_uid": 20,
+                        "cnfield": "国外籍贯"
                     },
                     {
                         "field": "JGSSQ1",
@@ -255,8 +256,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JGSSQ1",
                         "cnname": "每日疫情填报",
-                        "cnfield": "籍贯省",
-                        "_uid": 21
+                        "_uid": 21,
+                        "cnfield": "籍贯省"
                     },
                     {
                         "field": "JGSSQ2",
@@ -265,8 +266,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JGSSQ2",
                         "cnname": "每日疫情填报",
-                        "cnfield": "籍贯市",
-                        "_uid": 22
+                        "_uid": 22,
+                        "cnfield": "籍贯市"
                     },
                     {
                         "field": "JGSSQ3",
@@ -275,8 +276,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JGSSQ3",
                         "cnname": "每日疫情填报",
-                        "cnfield": "籍贯区",
-                        "_uid": 23
+                        "_uid": 23,
+                        "cnfield": "籍贯区"
                     },
                     {
                         "field": "JTGNW",
@@ -285,8 +286,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTGNW",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "家庭所在地（国内/外）",
-                        "_uid": 24
+                        "_uid": 24,
+                        "cnfield": "家庭所在地（国内/外）"
                     },
                     {
                         "field": "JTGWJTWZ",
@@ -295,8 +296,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTGWJTWZ",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "家庭国外具体位置",
-                        "_uid": 25
+                        "_uid": 25,
+                        "cnfield": "家庭国外具体位置"
                     },
                     {
                         "field": "JTSSQ1",
@@ -305,8 +306,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTSSQ1",
                         "cnname": "每日疫情填报",
-                        "cnfield": "家庭省",
-                        "_uid": 26
+                        "_uid": 26,
+                        "cnfield": "家庭省"
                     },
                     {
                         "field": "JTSSQ2",
@@ -315,8 +316,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTSSQ2",
                         "cnname": "每日疫情填报",
-                        "cnfield": "家庭市",
-                        "_uid": 27
+                        "_uid": 27,
+                        "cnfield": "家庭市"
                     },
                     {
                         "field": "JTSSQ3",
@@ -325,8 +326,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTSSQ3",
                         "cnname": "每日疫情填报",
-                        "cnfield": "家庭区",
-                        "_uid": 28
+                        "_uid": 28,
+                        "cnfield": "家庭区"
                     },
                     {
                         "field": "JTJTDZ",
@@ -335,8 +336,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTJTDZ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "家庭具体地址",
-                        "_uid": 29
+                        "_uid": 29,
+                        "cnfield": "家庭具体地址"
                     },
                     {
                         "field": "GNW",
@@ -345,8 +346,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "GNW",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "当前所在地（国内/外）",
-                        "_uid": 30
+                        "_uid": 30,
+                        "cnfield": "当前所在地（国内/外）"
                     },
                     {
                         "field": "GWJTWZ",
@@ -355,8 +356,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "GWJTWZ",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "国外具体位置",
-                        "_uid": 31
+                        "_uid": 31,
+                        "cnfield": "国外具体位置"
                     },
                     {
                         "field": "XJSSQ1",
@@ -365,8 +366,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "XJSSQ1",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "现居省",
-                        "_uid": 32
+                        "_uid": 32,
+                        "cnfield": "现居省"
                     },
                     {
                         "field": "XJSSQ2",
@@ -375,8 +376,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "XJSSQ2",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "现居市",
-                        "_uid": 33
+                        "_uid": 33,
+                        "cnfield": "现居市"
                     },
                     {
                         "field": "XJSSQ3",
@@ -385,8 +386,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "XJSSQ3",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "现居区",
-                        "_uid": 34
+                        "_uid": 34,
+                        "cnfield": "现居区"
                     },
                     {
                         "field": "JTDZ",
@@ -395,8 +396,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JTDZ",
                         "cnname": "本科生每日健康状况填报",
-                        "cnfield": "具体地址",
-                        "_uid": 35
+                        "_uid": 35,
+                        "cnfield": "具体地址"
                     },
                     {
                         "field": "TBRQ",
@@ -407,8 +408,8 @@
                         "enfield": "TBRQ",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "_uid": 36,
                         "cnfield": "填报日期",
+                        "_uid": 36,
                         "rightType": "noedit"
                     },
                     {
@@ -418,8 +419,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFZX",
                         "cnname": "每日疫情填报",
-                        "cnfield": "今日是否在校",
-                        "_uid": 37
+                        "_uid": 37,
+                        "cnfield": "今日是否在校"
                     },
                     {
                         "field": "XQ",
@@ -428,8 +429,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "XQ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "所在校区",
-                        "_uid": 38
+                        "_uid": 38,
+                        "cnfield": "所在校区"
                     },
                     {
                         "field": "SFWC",
@@ -438,8 +439,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFWC",
                         "cnname": "每日疫情填报",
-                        "_uid": 39,
-                        "cnfield": "今日本人是否外出"
+                        "cnfield": "今日本人是否外出",
+                        "_uid": 39
                     },
                     {
                         "field": "WCMDD",
@@ -448,8 +449,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "WCMDD",
                         "cnname": "每日疫情填报",
-                        "_uid": 40,
-                        "cnfield": "外出的具体目的地"
+                        "cnfield": "外出的具体目的地",
+                        "_uid": 40
                     },
                     {
                         "field": "BRTW",
@@ -458,8 +459,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "BRTW",
                         "cnname": "每日疫情填报",
-                        "_uid": 41,
-                        "cnfield": "今日本人测量体温（℃）"
+                        "cnfield": "今日本人测量体温（℃）",
+                        "_uid": 41
                     },
                     {
                         "field": "SFSTBS",
@@ -468,8 +469,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFSTBS",
                         "cnname": "每日疫情填报",
-                        "_uid": 42,
-                        "cnfield": "今日本人是否有身体异常？"
+                        "cnfield": "今日本人是否有身体异常？",
+                        "_uid": 42
                     },
                     {
                         "field": "STQKMS",
@@ -478,8 +479,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "STQKMS",
                         "cnname": "每日疫情填报",
-                        "_uid": 43,
-                        "cnfield": "请填写具体症状及诊疗处理情况"
+                        "cnfield": "请填写具体症状及诊疗处理情况",
+                        "_uid": 43
                     },
                     {
                         "field": "QTXHD",
@@ -488,8 +489,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "QTXHD",
                         "cnname": "每日疫情填报",
-                        "cnfield": "今日本人或家属是否参加群体性活动",
-                        "_uid": 44
+                        "_uid": 44,
+                        "cnfield": "今日本人或家属是否参加群体性活动"
                     },
                     {
                         "field": "QTHDMS",
@@ -498,8 +499,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "QTHDMS",
                         "cnname": "每日疫情填报",
-                        "cnfield": "填写具体活动地点及相关人员信息",
-                        "_uid": 45
+                        "_uid": 45,
+                        "cnfield": "填写具体活动地点及相关人员信息"
                     },
                     {
                         "field": "GMDRQ",
@@ -508,8 +509,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "GMDRQ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "今日是否密切接触高密度人群？",
-                        "_uid": 46
+                        "_uid": 46,
+                        "cnfield": "今日是否密切接触高密度人群？"
                     },
                     {
                         "field": "GMDQK",
@@ -518,8 +519,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "GMDQK",
                         "cnname": "每日疫情填报",
-                        "cnfield": "描述接触高密度人群情况",
-                        "_uid": 47
+                        "_uid": 47,
+                        "cnfield": "描述接触高密度人群情况"
                     },
                     {
                         "field": "SFQGYQ",
@@ -528,8 +529,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFQGYQ",
                         "cnname": "每日疫情填报",
-                        "_uid": 48,
-                        "cnfield": "近14日本人或家属去过湖北或疫情重灾区？"
+                        "cnfield": "近14日本人或家属去过湖北或疫情重灾区？",
+                        "_uid": 48
                     },
                     {
                         "field": "QGYQQKSM",
@@ -538,8 +539,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "QGYQQKSM",
                         "cnname": "每日疫情填报",
-                        "_uid": 49,
-                        "cnfield": "本人或家属去过湖北或疫情重灾区的具体情况"
+                        "cnfield": "本人或家属去过湖北或疫情重灾区的具体情况",
+                        "_uid": 49
                     },
                     {
                         "field": "FHRYJC",
@@ -548,8 +549,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "FHRYJC",
                         "cnname": "每日疫情填报",
-                        "cnfield": "是否同湖北/其他疫情严重地区返回人员接触",
-                        "_uid": 50
+                        "_uid": 50,
+                        "cnfield": "是否同湖北/其他疫情严重地区返回人员接触"
                     },
                     {
                         "field": "FHRYJCQK",
@@ -558,8 +559,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "FHRYJCQK",
                         "cnname": "每日疫情填报",
-                        "cnfield": "与返回疫区返回人员接触情况描述",
-                        "_uid": 51
+                        "_uid": 51,
+                        "cnfield": "与返回疫区返回人员接触情况描述"
                     },
                     {
                         "field": "SFJC",
@@ -568,8 +569,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFJC",
                         "cnname": "每日疫情填报",
-                        "_uid": 52,
-                        "cnfield": "本人/家属是否与疑似/确诊患者接触"
+                        "cnfield": "本人/家属是否与疑似/确诊患者接触",
+                        "_uid": 52
                     },
                     {
                         "field": "JCQKSM",
@@ -578,8 +579,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JCQKSM",
                         "cnname": "每日疫情填报",
-                        "_uid": 53,
-                        "cnfield": "与疑似或确诊患者接触过的具体情况描述"
+                        "cnfield": "与疑似或确诊患者接触过的具体情况描述",
+                        "_uid": 53
                     },
                     {
                         "field": "YXGL",
@@ -588,8 +589,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "YXGL",
                         "cnname": "每日疫情填报",
-                        "cnfield": "本人或家属是否有被医学隔离？",
-                        "_uid": 54
+                        "_uid": 54,
+                        "cnfield": "本人或家属是否有被医学隔离？"
                     },
                     {
                         "field": "YXGLMS",
@@ -598,8 +599,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "YXGLMS",
                         "cnname": "每日疫情填报",
-                        "cnfield": "医学隔离地点、隔离人数及隔离人员详情",
-                        "_uid": 55
+                        "_uid": 55,
+                        "cnfield": "医学隔离地点、隔离人数及隔离人员详情"
                     },
                     {
                         "field": "JJGL",
@@ -608,8 +609,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JJGL",
                         "cnname": "每日疫情填报",
-                        "cnfield": "本人或家属是否居家隔离？",
-                        "_uid": 56
+                        "_uid": 56,
+                        "cnfield": "本人或家属是否居家隔离？"
                     },
                     {
                         "field": "JJGLMS",
@@ -618,8 +619,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "JJGLMS",
                         "cnname": "每日疫情填报",
-                        "cnfield": "居家隔离地点、隔离人数及隔离人员详情",
-                        "_uid": 57
+                        "_uid": 57,
+                        "cnfield": "居家隔离地点、隔离人数及隔离人员详情"
                     },
                     {
                         "field": "SFYQZ",
@@ -628,8 +629,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "SFYQZ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "本人或家属是否有确诊病例？",
-                        "_uid": 58
+                        "_uid": 58,
+                        "cnfield": "本人或家属是否有确诊病例？"
                     },
                     {
                         "field": "QZXQ",
@@ -638,8 +639,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "QZXQ",
                         "cnname": "每日疫情填报",
-                        "cnfield": "填写确诊人数、地点",
-                        "_uid": 59
+                        "_uid": 59,
+                        "cnfield": "填写确诊人数、地点"
                     },
                     {
                         "field": "YSBL",
@@ -648,8 +649,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "YSBL",
                         "cnname": "每日疫情填报",
-                        "cnfield": "本人或家属是否有疑似病例？",
-                        "_uid": 60
+                        "_uid": 60,
+                        "cnfield": "本人或家属是否有疑似病例？"
                     },
                     {
                         "field": "YSQK",
@@ -658,8 +659,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "YSQK",
                         "cnname": "每日疫情填报",
-                        "cnfield": "疑似病例人数、地点",
-                        "_uid": 61
+                        "_uid": 61,
+                        "cnfield": "疑似病例人数、地点"
                     },
                     {
                         "field": "BZ",
@@ -668,8 +669,8 @@
                         "formId": "4af591a2704254e6017043da62f5496c",
                         "enfield": "BZ",
                         "cnname": "每日疫情填报",
-                        "_uid": 62,
-                        "cnfield": "备注"
+                        "cnfield": "备注",
+                        "_uid": 62
                     },
                     {
                         "field": "JS",
@@ -680,8 +681,8 @@
                         "enfield": "JS",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "_uid": 63,
                         "cnfield": "用户角色",
+                        "_uid": 63,
                         "rightType": "hidden"
                     },
                     {
@@ -693,8 +694,8 @@
                         "enfield": "FDYXM",
                         "cnname": "本科生每日健康状况填报",
                         "rightKey": "defaultValue",
-                        "cnfield": "辅导员姓名",
                         "_uid": 64,
+                        "cnfield": "辅导员姓名",
                         "rightType": "edit"
                     },
                     {
@@ -706,8 +707,8 @@
                         "enfield": "XH1",
                         "cnname": "本科生每日健康状况填报",
                         "rightKey": "defaultValue",
-                        "cnfield": "学号1",
                         "_uid": 65,
+                        "cnfield": "学号1",
                         "rightType": "hidden"
                     },
                     {
@@ -719,8 +720,8 @@
                         "enfield": "HT9D4312",
                         "cnname": "每日疫情填报",
                         "rightKey": "defaultValue",
-                        "cnfield": "脚本控件",
                         "_uid": 66,
+                        "cnfield": "脚本控件",
                         "rightType": "hidden"
                     },
                     {
@@ -732,8 +733,8 @@
                         "enfield": "HTC5B833",
                         "cnname": "本科生每日健康状况填报",
                         "rightKey": "defaultValue",
-                        "cnfield": "脚本控件",
                         "_uid": 67,
+                        "cnfield": "脚本控件",
                         "rightType": "hidden"
                     },
                     {
@@ -745,8 +746,8 @@
                         "enfield": "FQSJ",
                         "cnname": "本科生每日健康状况填报5.0",
                         "rightKey": "defaultValue",
-                        "cnfield": "发起时间",
                         "_uid": 68,
+                        "cnfield": "发起时间",
                         "rightType": "hidden"
                     }
                 ],
@@ -769,13 +770,12 @@
                 ],
                 "showForms": "4af591a2704254e6017043da62f5496c"
             },
-            "level": 1,
-            "groupOpType": "all",
             "name": "",
+            "groupOpType": "all",
             "typeStr": "user",
             "left": 10,
-            "nodeEvent": "[{\"implWay\":\"internalImpl\",\"attestationId\":\"\",\"serviceId\":\"4af591ae6a25f96b016a26087d800001\",\"serviceName\":\"流程采集\",\"parameters\":\"[{\\\"id\\\":\\\"4af591ae6a25f96b016a2608c0610002\\\",\\\"paramName\\\":\\\"ruleId\\\",\\\"paramValue\\\":\\\"e5f021d3e68e4457a2f51843963c7acd@_@CollectRuleValue\\\",\\\"paramType\\\":\\\"2\\\",\\\"dataType\\\":\\\"String\\\",\\\"paramDesc\\\":null,\\\"serviceId\\\":\\\"4af591ae6a25f96b016a26087d800001\\\",\\\"createTime\\\":\\\"2019-04-16T04:04:28.000Z\\\",\\\"paramText\\\":\\\"新增采集V5.0\\\"}]\"}]",
             "type": 6,
+            "nodeEvent": "[{\"implWay\":\"internalImpl\",\"attestationId\":\"\",\"serviceId\":\"4af591ae6a25f96b016a26087d800001\",\"serviceName\":\"流程采集\",\"parameters\":\"[{\\\"id\\\":\\\"4af591ae6a25f96b016a2608c0610002\\\",\\\"paramName\\\":\\\"ruleId\\\",\\\"paramValue\\\":\\\"e5f021d3e68e4457a2f51843963c7acd@_@CollectRuleValue\\\",\\\"paramType\\\":\\\"2\\\",\\\"dataType\\\":\\\"String\\\",\\\"paramDesc\\\":null,\\\"serviceId\\\":\\\"4af591ae6a25f96b016a26087d800001\\\",\\\"createTime\\\":\\\"2019-04-16T04:04:28.000Z\\\",\\\"paramText\\\":\\\"新增采集V5.0\\\"}]\"}]",
             "top": 125.5,
             "displayOrder": 0,
             "pId": 0,
@@ -785,7 +785,7 @@
     "defaultFormContent": null,
     "annexJson": [],
     "makeCopeJson": null,
-    "aduitJson": [],
+    "auditJson": [],
     "flowVerJson": {
         "id": "4af591a2704254e6017043da642f49aa",
         "wfname": "本科生每日健康状况填报",

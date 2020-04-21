@@ -1,5 +1,8 @@
 .env
 captcha.png
+reporter.conf
+*.json
+!model.json
 venv/
 .vscode/
 .idea/
