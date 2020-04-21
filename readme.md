@@ -6,7 +6,7 @@
 **祝各位健健康康。**  
 
 **Health report policy exists for EVERYONE's health**  
-**This Project is only for analyzing the techniques**  
+**This Project is only for analyzing the techniques, practical application is ABSOLUTELY FORBIDDEN**  
 **Be responsible for the common health, health condition should be reported Faithfully**  
 **Be Well**  
 
