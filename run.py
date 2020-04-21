@@ -1,6 +1,4 @@
-import asyncio
 import datetime
-import functools
 import json
 import random
 import re
@@ -9,10 +7,9 @@ import time
 import requests
 import schedule
 
-from login import http_build_query, login
+from login import http_build_query, timestamp, login
 
 storage = {}
-timestamp = lambda: int(round(time.time() * 1000))
 
 
 def run():
@@ -46,6 +43,7 @@ def run():
 
     return True
 
+
 def get_form_uuid(session):
     window_id = random.randint(0, 10000)
     t = random.randint(0, 1000000)
@@ -62,6 +60,7 @@ def get_form_uuid(session):
     print(' ..... done')
     return
     
+
 def get_user_info(session):
     url = 'http://one2020.xjtu.edu.cn/EIP/api/getUserAttribute.htm'
     
@@ -71,6 +70,7 @@ def get_user_info(session):
     print(' ..... done')
 
     return
+
 
 def get_previous_data(session):
     base_url = 'http://one2020.xjtu.edu.cn/EIP/queryservice/query.htm'
@@ -95,6 +95,7 @@ def get_previous_data(session):
 
     return
 
+
 def get_node_id(session):
     url = 'http://one2020.xjtu.edu.cn/EIP/flowNode/createNodeIdByNum.htm'
 
@@ -104,6 +105,7 @@ def get_node_id(session):
     print(' ..... done')
 
     return
+
 
 def load_form_model():
 
@@ -115,6 +117,7 @@ def load_form_model():
     print(' ..... done')
 
     return
+
 
 def compile_form():
     data = [
@@ -144,7 +147,6 @@ def compile_form():
         {'offsets': 'flowJson.0.name', 'value': storage['user_info']['userId']},
         {'offsets': 'flowJson.0.title', 'value': storage['user_info']['userName']},
     ]
-
     
     for datum in data:
         print('[  OK  ]Compiling Form Data: ', datum['offsets'], end='')
@@ -159,13 +161,14 @@ def compile_form():
     
     return
 
+
 def submit_form(session):
     with open('trail.json', 'w', encoding='utf-8') as trail:
         json.dump(storage['form'], trail)
 
     url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/sendCooperative.htm'
 
-    print('[  OK  ]Submiting to: ', url, end='')
+    print('[  OK  ]Submitting to: ', url, end='')
     # response = session.post(
     #     url,
     #     data=json.dumps(storage['form']),

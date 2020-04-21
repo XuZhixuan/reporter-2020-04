@@ -11,7 +11,6 @@ from config.config import config
 
 def login():
     session = requests.session()
-    timestamp = lambda: int(round(time.time() * 1000))
 
     # Goto Auth Page 前往认证页面，获取 Cookies
     url = 'https://org.xjtu.edu.cn/openplatform/oauth/authorizeCas?' + http_build_query({
@@ -20,7 +19,7 @@ def login():
             # 'service': 'http://ehall.xjtu.edu.cn'
             'TARGET': 'http://one2020.xjtu.edu.cn/EIP/caslogin.jsp'
         })
-    })    
+    })
     print('[  OK  ]Requesting: ', url, end='')
     response = session.get(url)
 
@@ -30,7 +29,7 @@ def login():
         '_': timestamp()
     })
     print(' ..... done')
-    
+
     print('[  OK  ]Requesting: ', url, end='')
     response = session.get(url)
     data = json.loads(response.text)
@@ -58,7 +57,7 @@ def login():
         captcha = input('Captcha:')
 
     # 构造登陆数据
-    
+
     print('[  OK  ]Building Login Info', end='')
     login_params = {
         'username': config('login.username'),
@@ -86,7 +85,7 @@ def login():
     # 登陆成功后设置 Cookies
     session.cookies.set('open_Platform_User', str(data['data']['tokenKey']))
     session.cookies.set('memberId', str(data['data']['orgInfo']['memberId']))
-    
+
     # 模拟 login.js 请求用户数据
     url = 'https://org.xjtu.edu.cn/openplatform/g/admin/getUserIdentity?' + http_build_query({
         'memberId': data['data']['orgInfo']['memberId'],
@@ -112,10 +111,10 @@ def login():
         print('\n[FAILED]Login Error: ', data)
         return False
     print(' ..... done')
-    
+
     redirect_url = data['data'].split('?')
 
-    # Fllowing code for parsing redirect url
+    # Following code for parsing redirect url
     params = {}
     for param in redirect_url[1].split('&'):
         tmp = param.split('=')
@@ -157,7 +156,7 @@ def login():
     except AttributeError as e:
         print('\n[FAILED]Response Data Has No Redirect Information')
         print('[  OK  ]Writing to file: login_failed.html', end='')
-        
+
         with open('login_failed.html', 'w', encoding='utf-8') as file:
             file.write(response.text)
         print(' ..... done')
@@ -166,22 +165,29 @@ def login():
     print(' ..... done')
     return url
 
+
 def pad(text):
     text_length = len(text)
     amount_to_pad = AES.block_size - (text_length % AES.block_size)
     if amount_to_pad == 0:
         amount_to_pad = AES.block_size
-    pad = chr(amount_to_pad)
-    return text + pad * amount_to_pad
+    padding = chr(amount_to_pad)
+    return text + padding * amount_to_pad
+
 
 def encrypt(password):
-    crypter = AES.new(
+    cipher = AES.new(
         config('login.public_key').encode('utf-8'),
         AES.MODE_ECB
     )
 
-    encrypted_data = crypter.encrypt(pad(password).encode('utf-8'))    
+    encrypted_data = cipher.encrypt(pad(password).encode('utf-8'))
     return str(base64.b64encode(encrypted_data), encoding='utf-8')
+
+
+def timestamp():
+    return int(round(time.time() * 1000))
+
 
 def http_build_query(parameters):
     query = []
