@@ -2,6 +2,7 @@ import datetime
 import json
 import random
 import re
+import sys
 import time
 
 import requests
@@ -199,6 +200,11 @@ def submit_form(session):
 
 
 if __name__ == "__main__":
+    if sys.argv[1] == '--run-immediately':
+        print('[  OK  ]Starting Immediately ..... done')
+        run()
+        exit(0)
+    
     print('[  OK  ]Creating Scheduler', end='')
     schedule.every().day.at("01:00").do(run)
     print(' ..... done')
