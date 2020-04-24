@@ -200,7 +200,7 @@ def submit_form(session):
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == '--run-immediately':
+    if len(sys.argv) > 1 and sys.argv[1] == '--run-immediately':
         print('[  OK  ]Starting Immediately ..... done')
         run()
         exit(0)
