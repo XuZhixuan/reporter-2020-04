@@ -9,6 +9,7 @@ data = {
     }
 }
 
+
 def getter(data, parameters):
     if len(parameters) > 1:
         return getter(
@@ -18,6 +19,7 @@ def getter(data, parameters):
     else:
         return data[parameters[0]]
 
+
 def config(name, default=None):
     params = parse_name(name)
     try:
@@ -26,6 +28,7 @@ def config(name, default=None):
         return default
     finally:
         return value
+
 
 def parse_name(name):
     parameters = name.split('.')

@@ -20,9 +20,8 @@
 * 配置虚拟环境，运行 `virtualenv ./venv`  
 * 启动虚拟环境，运行 `source ./venv/bin/activate`  
 * 安装依赖，运行 `pip3 install -r requirements.txt`  
+* 配置运行信息，运行 `python3 setup.py`
 * 退出虚拟环境，运行 `deactivate`
-* 复制 .env 运行 `cp .env.example .env`
-* 配置 .env 中的账号信息
 * 配置进程监视
 ## 开发者 | Contributors
 * 代码： [f(x, z)=xzx](https://github.com/XuZhixuan)

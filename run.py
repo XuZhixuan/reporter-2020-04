@@ -17,54 +17,60 @@ def run():
     # 获取登陆链接
     url = login()
 
-    # 请求登录链接，设置 Cookie 
+    # 请求登录链接，设置 Cookie
     session = requests.Session()
     session.get(url)
+
+    # 从本地文件加载运行时数据
+    runtime_data = load_runtime_data()
 
     # 获取用户信息
     get_user_info(session)
 
-    # 获取早前表单信息
-    get_previous_data(session)
+    # 获取自动注入信息
+    auto_data = get_auto_data(session, runtime_data['queries'])
 
     # 获取提交 UUID
-    get_form_uuid(session)
+    uuid = get_form_uuid(session, runtime_data['flow_id'])
 
     # 获取事务节点 ID
-    get_node_id(session)
-
-    # 从本地文件加载表单模板
-    load_form_model()
+    node_id = get_node_id(session)
 
     # 合成表单
-    compile_form()
+    form_data = assemble_form(
+        template=runtime_data['template'],
+        auto_data=auto_data,
+        assembly=runtime_data['assembly'],
+        uuid=uuid,
+        node_id=node_id
+    )
 
     # 提交表单
-    submit_form(session)
+    submit_form(session, form_data)
 
     return True
 
 
-def get_form_uuid(session):
+def get_form_uuid(session, flow_id):
     window_id = random.randint(0, 10000)
     t = random.randint(0, 1000000)
 
     url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/openCooperative.htm?' + http_build_query({
-        'flowId': '4af591a96fcb6ce5016ffa657723057b',
+        'flowId': flow_id,
         '_t': t,
         '_winid': window_id
     })
 
     print('[  OK  ]Requesting: ', url, end='')
     response = session.get(url)
-    storage['uuid'] = re.search(r'var uuid = \'(.*)\';', response.text).group(1)
+    uuid = re.search(r'var uuid = \'(.*)\';', response.text).group(1)
     print(' ..... done')
-    return
-    
+    return uuid
+
 
 def get_user_info(session):
     url = 'http://one2020.xjtu.edu.cn/EIP/api/getUserAttribute.htm'
-    
+
     print('[  OK  ]Requesting: ', url, end='')
     response = session.post(url)
     storage['user_info'] = json.loads(response.text)
@@ -73,15 +79,11 @@ def get_user_info(session):
     return
 
 
-def get_previous_data(session):
+def get_auto_data(session, queries):
     base_url = 'http://one2020.xjtu.edu.cn/EIP/queryservice/query.htm'
-    queries = [
-        {'name': 'college', 'snumber': 'SYMC', 'id_key': 'XH'},
-        {'name': 'class', 'snumber': 'XSBJCX', 'id_key': 'studentno'},
-        {'name': 'previous', 'snumber': 'GHHXSJBYJ', 'id_key': 'GH'},
-    ]
 
     storage['form_data'] = {}
+    data = {}
     for query in queries:
         url = base_url + '?' + http_build_query({
             'snumber': query['snumber'],
@@ -91,10 +93,10 @@ def get_previous_data(session):
 
         print('[  OK  ]Requesting: ', url, end='')
         response = session.get(url)
-        storage['form_data'][query['name']] = json.loads(response.text)[0]
+        data[query['name']] = json.loads(response.text)[0]
         print(' ..... done')
 
-    return
+    return data
 
 
 def get_node_id(session):
@@ -102,77 +104,59 @@ def get_node_id(session):
 
     print('[  OK  ]Requesting: ', url, end='')
     response = session.post(url, {'num': 1})
-    storage['node_id'] = json.loads(response.text)[0]
+    node_id = json.loads(response.text)[0]
     print(' ..... done')
 
-    return
+    return node_id
 
 
-def load_form_model():
-
-    print('[  OK  ]Loading Model from: ', 'model.json', end='')
-    with open('model.json', 'r', encoding='utf-8') as file:
-        model = json.load(file)
-
-    storage['form'] = model
-    print(' ..... done')
-
-    return
-
-
-def compile_form():
-    data = [
-        {'offsets': 'instJson.uniqueIdentify', 'value': storage['uuid']},
-        {'offsets': 'formJson.0.XM', 'value': storage['form_data']['previous']['XM']},
-        {'offsets': 'formJson.0.XGH', 'value': storage['form_data']['previous']['XGH']},
-        {'offsets': 'formJson.0.SJH', 'value': storage['form_data']['previous']['SJH']},
-        {'offsets': 'formJson.0.SZSY', 'value': storage['form_data']['previous']['SZSY'] + '@#@' + storage['form_data']['previous']['SZSY']},
-        {'offsets': 'formJson.0.BJ', 'value': storage['form_data']['previous']['BJ'] + '@#@' + storage['form_data']['previous']['BJ']},
-        {'offsets': 'formJson.0.JGSSQ1', 'value': storage['form_data']['previous']['JGSSQ1'] + '@#@' + storage['form_data']['previous']['JGSSQ1MC']},
-        {'offsets': 'formJson.0.JGSSQ2', 'value': storage['form_data']['previous']['JGSSQ2'] + '@#@' + storage['form_data']['previous']['JGSSQ2MC']},
-        {'offsets': 'formJson.0.JGSSQ3', 'value': storage['form_data']['previous']['JGSSQ3'] + '@#@' + storage['form_data']['previous']['JGSSQ3MC']},
-        {'offsets': 'formJson.0.JTSSQ1', 'value': storage['form_data']['previous']['JTSSQ1'] + '@#@' + storage['form_data']['previous']['JTSSQ1MC']},
-        {'offsets': 'formJson.0.JTSSQ2', 'value': storage['form_data']['previous']['JTSSQ2'] + '@#@' + storage['form_data']['previous']['JTSSQ2MC']},
-        {'offsets': 'formJson.0.JTSSQ3', 'value': storage['form_data']['previous']['JTSSQ3'] + '@#@' + storage['form_data']['previous']['JTSSQ3MC']},
-        {'offsets': 'formJson.0.JTJTDZ', 'value': storage['form_data']['previous']['JTJTDZ']},
-        {'offsets': 'formJson.0.XJSSQ1', 'value': storage['form_data']['previous']['XJSSQ1'] + '@#@' + storage['form_data']['previous']['XJSSQ1MC']},
-        {'offsets': 'formJson.0.XJSSQ2', 'value': storage['form_data']['previous']['XJSSQ2'] + '@#@' + storage['form_data']['previous']['XJSSQ2MC']},
-        {'offsets': 'formJson.0.XJSSQ3', 'value': storage['form_data']['previous']['XJSSQ3'] + '@#@' + storage['form_data']['previous']['XJSSQ3MC']},
-        {'offsets': 'formJson.0.JTDZ', 'value': storage['form_data']['previous']['JTDZ']},
-        {'offsets': 'formJson.0.TBRQ', 'value': str(datetime.date.today())},
-        {'offsets': 'formJson.0.BRTW', 'value': str(round(random.uniform(36.4, 37.0), 1))},
-        {'offsets': 'formJson.0.FDYXM', 'value': storage['form_data']['previous']['FDYXM'] + '@#@' + storage['form_data']['previous']['FDYXM']},
-        {'offsets': 'formJson.0.XH1', 'value': storage['user_info']['userId']},
-        {'offsets': 'formJson.0.FQSJ', 'value': str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))},
-        {'offsets': 'flowJson.0.id', 'value': storage['node_id']},
-        {'offsets': 'flowJson.0.name', 'value': storage['user_info']['userId']},
-        {'offsets': 'flowJson.0.title', 'value': storage['user_info']['userName']},
+def load_runtime_data():
+    files = [
+        {'name': 'runtime/queries.json', 'mode': 'r', 'key': 'queries'},
+        {'name': 'runtime/flow_id.json', 'mode': 'r', 'key': 'flow_id'},
+        {'name': 'runtime/template.json', 'mode': 'r', 'key': 'template'},
+        {'name': 'runtime/assembly.json', 'mode': 'r', 'key': 'assembly'},
     ]
-    
-    for datum in data:
-        print('[  OK  ]Compiling Form Data: ', datum['offsets'], end='')
-        index = datum['offsets'].split('.')
-        location = 'storage[\'form\']'
+
+    data = {}
+    for file in files:
+        print('[  OK  ]Loading Model from: ', file['name'], end='')
+        with open(file['name'], 'r', encoding='utf-8') as read:
+            datum = json.load(read)
+
+        data[file['key']] = datum
+        print(' ..... done')
+
+    return data
+
+
+def assemble_form(template, auto_data, assembly, uuid, node_id):
+    for instruction in assembly:
+        print('[  OK  ]Assembling Form Data: ', instruction['offsets'], end='')
+        index = instruction['offsets'].split('.')
+        location = 'template'
         for i in index:
             location += ('[' + i + ']' if i.isdigit() else '[\'' + i + '\']')
         loc = locals()
-        exec(location + ' = ' + '\'' + datum['value'] + '\'', {'storage': storage}, loc)
+        gol = globals()
+        exec('value = ' + instruction['value'], gol, loc)
+        exec(location + ' = value', loc)
 
         print(' ..... done')
-    
-    return
+
+    return template
 
 
-def submit_form(session):
+def submit_form(session, form_data):
     with open('trail.json', 'w', encoding='utf-8') as trail:
-        json.dump(storage['form'], trail)
+        json.dump(form_data, trail)
 
     url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/sendCooperative.htm'
 
     print('[  OK  ]Submitting to: ', url, end='')
 
     form = {}
-    for (key, value) in storage['form'].items():
+    for (key, value) in form_data.items():
         if value is None:
             form[key] = value
         elif isinstance(value, str):
@@ -180,14 +164,7 @@ def submit_form(session):
         else:
             form[key] = json.dumps(value)
 
-    response = session.post(
-        url,
-        data=form,
-        headers={
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-    )
+    response = session.post(url, form)
 
     data = json.loads(response.text)
 
@@ -196,7 +173,20 @@ def submit_form(session):
         return False
 
     print(' ..... done')
+    print('[  OK  ]Response: ', data['desc'])
     return
+
+
+def load_schedules():
+    import os
+
+    if not os.path.exists('runtime/schedule.json'):
+        print('[FAILED]Schedules File Not Found, Please run setup tool to create')
+
+    with open('runtime/schedule.json') as file:
+        schedule = json.load(file)
+
+    return schedule
 
 
 if __name__ == "__main__":
@@ -204,9 +194,12 @@ if __name__ == "__main__":
         print('[  OK  ]Starting Immediately ..... done')
         run()
         exit(0)
-    
+
+    schedules = load_schedules()
+
     print('[  OK  ]Creating Scheduler', end='')
-    schedule.every().day.at("01:00").do(run)
+    for single_schedule in schedules:
+        schedule.every().day.at(single_schedule).do(run)
     print(' ..... done')
 
     print('[  OK  ]Starting Scheduler ..... done')

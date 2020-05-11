@@ -15,6 +15,7 @@ def env(name, default=None):
     finally:
         return value
 
+
 def parse_name(name):
     parameters = name.split('.')
 
@@ -25,6 +26,7 @@ def parse_name(name):
         'section': parameters[0],
         'option': parameters[1]
     }
+
 
 class EnvNameError(Exception):
     pass
