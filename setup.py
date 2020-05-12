@@ -65,6 +65,7 @@ def download_json(mode):
         'queries.json',
         'assembly.json',
         'flow_id.json',
+        'version',
     ]
 
     base_url = 'https://secure.eeyes.xyz/reporter/' + ('returned' if mode == '2' else 'no-return') + '/'
