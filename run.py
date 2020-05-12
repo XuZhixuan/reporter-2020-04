@@ -9,6 +9,7 @@ import requests
 import schedule
 
 from login import http_build_query, timestamp, login
+from setup import download_json
 
 storage = {}
 
@@ -212,13 +213,7 @@ def check_for_update():
         print(' Not Updating ..... done')
     else:
         print(' Updating ..... done')
-        response = requests.get(
-            'https://secure.eeyes.xyz/reporter/' + ('no-return' if mode == 0 else 'returned') + '/template.json'
-        )
-        with open('./runtime/template.json', 'w') as template:
-            template.write(response.content)
-        with open('./runtime/version', 'w') as version_file:
-            version_file.write(latest)
+        download_json(mode)
 
 
 if __name__ == "__main__":
