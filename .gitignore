@@ -8,3 +8,5 @@ venv/
 .idea/
 __pycache__/
 runtime/*.json
+runtime/version
+runtime/mode

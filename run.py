@@ -21,6 +21,9 @@ def run():
     session = requests.Session()
     session.get(url)
 
+    # 检查文件更新
+    check_for_update()
+
     # 从本地文件加载运行时数据
     runtime_data = load_runtime_data()
 
@@ -112,10 +115,10 @@ def get_node_id(session):
 
 def load_runtime_data():
     files = [
-        {'name': 'runtime/queries.json', 'mode': 'r', 'key': 'queries'},
-        {'name': 'runtime/flow_id.json', 'mode': 'r', 'key': 'flow_id'},
-        {'name': 'runtime/template.json', 'mode': 'r', 'key': 'template'},
-        {'name': 'runtime/assembly.json', 'mode': 'r', 'key': 'assembly'},
+        {'name': './runtime/queries.json', 'mode': 'r', 'key': 'queries'},
+        {'name': './runtime/flow_id.json', 'mode': 'r', 'key': 'flow_id'},
+        {'name': './runtime/template.json', 'mode': 'r', 'key': 'template'},
+        {'name': './runtime/assembly.json', 'mode': 'r', 'key': 'assembly'},
     ]
 
     data = {}
@@ -180,13 +183,42 @@ def submit_form(session, form_data):
 def load_schedules():
     import os
 
-    if not os.path.exists('runtime/schedule.json'):
+    if not os.path.exists('./runtime/schedule.json'):
         print('[FAILED]Schedules File Not Found, Please run setup tool to create')
 
-    with open('runtime/schedule.json') as file:
-        schedule = json.load(file)
+    with open('./runtime/schedule.json') as file:
+        schedule_list = json.load(file)
 
-    return schedule
+    return schedule_list
+
+
+def check_for_update():
+    with open('./runtime/mode', 'r') as mode_file:
+        mode = mode_file.read()
+
+    print('[  OK  ]Checking for update.', end='')
+
+    with open('./runtime/version', 'r') as version_file:
+        current = version_file.read()
+    print(' Current Version: ', current, end='.')
+
+    response = requests.get(
+        'https://secure.eeyes.xyz/reporter/' + ('no-return' if mode == 0 else 'returned') + '/version'
+    )
+    latest = response.text.strip('\n')
+    print(' Latest Version: ', latest, end='.')
+
+    if current == latest:
+        print(' Not Updating ..... done')
+    else:
+        print(' Updating ..... done')
+        response = requests.get(
+            'https://secure.eeyes.xyz/reporter/' + ('no-return' if mode == 0 else 'returned') + '/template.json'
+        )
+        with open('./runtime/template.json', 'w') as template:
+            template.write(response.content)
+        with open('./runtime/version', 'w') as version_file:
+            version_file.write(latest)
 
 
 if __name__ == "__main__":

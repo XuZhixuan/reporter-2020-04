@@ -32,6 +32,9 @@ def setup():
     while mode not in ['1', '2']:
         mode = input(':')
 
+    with open('runtime/mode', 'w') as mode_file:
+        mode_file.write(mode)
+
     schedule = []
     if mode == '1':
         time = '25:61'
