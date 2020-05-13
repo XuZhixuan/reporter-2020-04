@@ -23,6 +23,10 @@
 * 配置运行信息，运行 `python3 setup.py`
 * 退出虚拟环境，运行 `deactivate`
 * 配置进程监视
+## 使用二进制发布 | Binary Distributions
+* 配置数据，运行 `./run setup`
+* 启动脚本，运行 `./run report`
+* 立即提交，运行 `./run report --run-immediately`
 ## 开发者 | Contributors
 * 代码： [f(x, z)=xzx](https://github.com/XuZhixuan)
 * 技术支持： [mhq1065](https://github.com/mhq1065)
