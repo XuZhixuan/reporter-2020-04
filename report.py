@@ -216,8 +216,8 @@ def check_for_update():
         download_json(mode)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == '--run-immediately':
+def main(run_immediately):
+    if run_immediately:
         print('[  OK  ]Starting Immediately ..... done')
         run()
         exit(0)

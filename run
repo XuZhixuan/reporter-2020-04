@@ -1,0 +1,35 @@
+#!python
+
+import sys
+
+from setup import main as setup
+from report import main as report
+
+available_scripts = ['report', 'setup']
+
+
+def run(script, arg):
+    if script == 'setup':
+        setup()
+    elif script == 'report':
+        params = [
+            {'name': '--run-immediately', 'shown': False}
+        ]
+        for param in params:
+            if param['name'] in arg:
+                param['shown'] = True
+
+        report(params[0]['shown'])
+
+
+if __name__ == '__main__':
+    args = sys.argv
+
+    if args[1] not in available_scripts:
+        print('[FAILED]请指定要运行的脚本命令')
+        print('可用命令：', end='')
+        for available_script in available_scripts:
+            print(available_script, end=', ')
+        print('')
+    else:
+        run(args[1], args[2:])

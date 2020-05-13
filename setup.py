@@ -78,7 +78,7 @@ def download_json(mode):
         print('done')
 
 
-if __name__ == '__main__':
+def main():
     runtime_mode = setup()
     print('配置完成，正在下载模板文件')
 
