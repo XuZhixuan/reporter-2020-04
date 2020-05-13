@@ -201,13 +201,13 @@ def check_for_update():
 
     with open('./runtime/version', 'r') as version_file:
         current = version_file.read()
-    print(' Current Version: ', current, end='.')
+    print(' Current Version: ', current.strip('\n'), end='.')
 
     response = requests.get(
-        'https://secure.eeyes.xyz/reporter/' + ('no-return' if mode == 0 else 'returned') + '/version'
+        'https://secure.eeyes.xyz/reporter/' + ('no-return' if mode == '1' else 'returned') + '/version'
     )
-    latest = response.text.strip('\n')
-    print(' Latest Version: ', latest, end='.')
+    latest = response.text
+    print(' Latest Version: ', latest.strip('\n'), end='.')
 
     if current == latest:
         print(' Not Updating ..... done')
