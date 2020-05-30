@@ -2,7 +2,6 @@ import datetime
 import json
 import random
 import re
-import sys
 import time
 
 import requests
@@ -15,6 +14,34 @@ storage = {}
 
 
 def run():
+    from requests.exceptions import RequestException
+
+    retries = 5
+
+    print('-' * 60)
+    print('[  OK  ]Job started at: ', datetime.datetime.now())
+
+    while retries > 0:
+        try:
+            report()
+
+        except RequestException:
+            print('\n[FAILED]Network Error, Retrying.')
+            retries -= 1
+            continue
+
+        else:
+            break
+
+    if retries == 0:
+        print('[FAILED]Maximum Retries time of 5 times exceeded, Exiting.')
+    else:
+        print('[  OK  ]Job Finished at: ', datetime.datetime.now())
+
+    print('-' * 60)
+
+
+def report():
     # 获取登陆链接
     url = login()
 
