@@ -86,7 +86,7 @@ def get_form_uuid(session, flow_id):
     window_id = random.randint(0, 10000)
     t = random.randint(0, 1000000)
 
-    url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/openCooperative.htm?' + http_build_query({
+    url = 'http://jkrb.xjtu.edu.cn/EIP/cooperative/openCooperative.htm?' + http_build_query({
         'flowId': flow_id,
         '_t': t,
         '_winid': window_id
@@ -100,10 +100,9 @@ def get_form_uuid(session, flow_id):
 
 
 def get_user_info(session):
-    url = 'http://one2020.xjtu.edu.cn/EIP/api/getUserAttribute.htm'
-
+    url = 'http://jkrb.xjtu.edu.cn/EIP/api/getUserAttribute.htm'
     print('[  OK  ]Requesting: ', url, end='')
-    response = session.post(url)
+    response = session.get(url)
     storage['user_info'] = json.loads(response.text)
     print(' ..... done')
 
@@ -111,7 +110,7 @@ def get_user_info(session):
 
 
 def get_auto_data(session, queries):
-    base_url = 'http://one2020.xjtu.edu.cn/EIP/queryservice/query.htm'
+    base_url = 'http://jkrb.xjtu.edu.cn/EIP/queryservice/query.htm'
 
     storage['form_data'] = {}
     data = {}
@@ -131,7 +130,7 @@ def get_auto_data(session, queries):
 
 
 def get_node_id(session):
-    url = 'http://one2020.xjtu.edu.cn/EIP/flowNode/createNodeIdByNum.htm'
+    url = 'http://jkrb.xjtu.edu.cn/EIP/flowNode/createNodeIdByNum.htm'
 
     print('[  OK  ]Requesting: ', url, end='')
     response = session.post(url, {'num': 1})
@@ -182,7 +181,7 @@ def submit_form(session, form_data):
     with open('trail.json', 'w', encoding='utf-8') as trail:
         json.dump(form_data, trail)
 
-    url = 'http://one2020.xjtu.edu.cn/EIP/cooperative/sendCooperative.htm'
+    url = 'http://jkrb.xjtu.edu.cn/EIP/cooperative/sendCooperative.htm'
 
     print('[  OK  ]Submitting to: ', url, end='')
 
@@ -264,3 +263,7 @@ def main(run_immediately):
         except KeyboardInterrupt as i:
             exit()
             print('[  OK  ]Exiting')
+
+
+if __name__ == '__main__':
+    main(True)

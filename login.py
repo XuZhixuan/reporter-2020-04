@@ -17,7 +17,7 @@ def login():
         'state': 'xjdCas',
         'redirectUri': 'https://cas.xjtu.edu.cn?' + http_build_query({
             # 'service': 'http://ehall.xjtu.edu.cn'
-            'TARGET': 'http://one2020.xjtu.edu.cn/EIP/caslogin.jsp'
+            'TARGET': 'http://jkrb.xjtu.edu.cn/EIP/caslogin.jsp'
         })
     })
     print('[  OK  ]Requesting: ', url, end='')
