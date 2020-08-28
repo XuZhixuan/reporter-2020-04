@@ -263,7 +263,3 @@ def main(run_immediately):
         except KeyboardInterrupt as i:
             exit()
             print('[  OK  ]Exiting')
-
-
-if __name__ == '__main__':
-    main(True)
