@@ -36,22 +36,10 @@ def setup():
         mode_file.write(mode)
 
     schedule = []
-    if mode == '1':
-        time = '25:61'
-        while not re.match(r'(2[0-3]|[01]?[1-9]):([0-5]?[0-9])', time):
-            time = input('请输入每天运行脚本的时间（建议选择在06:00后运行，当表单更新，需要时间更新模板）\n格式如："06:00" （无需双引号）:')
-        schedule.append(time)
-
-    elif mode == '2':
-        time = '25:61'
-        while (not re.match(r'(2[0-3]|[01]?[1-9]):([0-5]?[0-9])', time)) or not '11:00' > time > '06:00':
-            time = input('请输入上午运行脚本的时间\n格式如："06:00" （无需双引号）:')
-        schedule.append(time)
-
-        time = '25:61'
-        while (not re.match(r'(2[0-3]|[01]?[1-9]):([0-5]?[0-9])', time)) or not '17:00' > time > '12:00':
-            time = input('请输入下午运行脚本的时间\n格式如："14:00" （无需双引号）:')
-        schedule.append(time)
+    time = '25:61'
+    while not re.match(r'(2[0-3]|[01]?[1-9]):([0-5]?[0-9])', time):
+        time = input('请输入每天运行脚本的时间（建议选择在06:00后运行，当表单更新，需要时间更新模板）\n格式如："06:00" （无需双引号）:')
+    schedule.append(time)
 
     with open('runtime/schedule.json', 'w') as file:
         json.dump(schedule, file)
